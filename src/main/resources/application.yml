@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+       # jdbc
+       datasource:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/shiro?serverTimezone=GMT&useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: my-secret-pw
+       # redis
+       redis:
+         database: 0
+         host: localhost
+         port: 6379
+         password:
+         jedis:
+           pool:
+             max-active: 8
+             max-wait: -1
+             max-idle: 8
+             min-idle: 0
+
+       shiro:
+         # 8小时   8*60*60*1000 =28800000
+         # 1分钟   1*60*1000 = 60000
+         globalSessionTimeout: 28800000
+
+         cookieName: "default_manager"
+
+         # url 请求前缀
+         urlPrefix: "/api"
+
+
+# mybatis plus
+mybatis-plus:
+         config-location: classpath:mybatis/mybatis-config.xml
+         mapper-locations: classpath:com/libratone/frog/mapper/xml/*.xml
